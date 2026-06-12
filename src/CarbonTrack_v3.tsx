@@ -167,15 +167,15 @@ const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","D
 
 const C = {
   bg:"#08111e",grad1:"#00d9ff",grad2:"#00a8ff",border:"#1a3a52",text:"#e8eef5",muted:"#8899aa",accent:"#ff6b9d",
-  s1:"#00ffaa",s2:"#ffd60a",s3:"#ff006e",green:"#06d6a0",warn:"#ff9500"
+  s1:"#00ffaa",s2:"#ffd60a",s3:"#ff006e",green:"#06d6a0",warn:"#ff9500",surface:"#0d1f33"
 };
 
 export default function CarbonTrackPro(){
   const [tab,setTab]=useState("Setup");
-  const [setup,setSetup]=useState({holdingName:"National Holding Group",year:"2025",baseYear:"2022",periodStart:"01 January 2025",periodEnd:"31 December 2025",framework:FRAMEWORKS[0],boundary:BOUNDARIES[2],verificationStatus:"Not yet verified",orgDesc:"National Holding represents a diversified conglomerate operating across capital markets, real estate, food production, construction, hospitality, energy, and general trading sectors across the Middle East region."});
+  const [setup,setSetup]=useState({holdingName:"National Holding Group",year:"2025",baseYear:"2022",periodStart:"01 January 2025",periodEnd:"31 December 2025",framework:FRAMEWORKS[0],boundary:BOUNDARIES[2],verificationStatus:"Not yet verified",orgDesc:"National Holding represents a diversified conglomerate operating across capital markets, real estate, food production, construction, hospitality, energy, and general trading sectors across the Middle East region.",corporateFTE:"",corporateRevenue:""});
   const PREPARED_BY="Mohamed Gibril Mohamed Elimam";
   
-  const [allData,setAllData]=useState(Object.fromEntries(ENTITIES.map(e=>({[e.id]:{
+  const [allData,setAllData]=useState(Object.fromEntries(ENTITIES.map(e=>[e.id,{
     s1:[],s2:[],s3:[],
     name:e.name,
     shortName:e.short,
@@ -184,7 +184,7 @@ export default function CarbonTrackPro(){
     revenue:"",
     primarySector:e.sectors[0],
     sectors:Object.fromEntries(e.sectors.map(s=>([s,{description:"",fte:"",revenue:""}])))
-  }})).flat().map((o,i)=>Object.entries(o)[0])));
+  }])));
   
   const [entId,setEntId]=useState("efi");
   const [divId,setDivId]=useState("");
